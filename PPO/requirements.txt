@@ -1,0 +1,9 @@
+tensorflow-gpu
+tabulate
+dm-tree
+pandas
+ray
+numpy==1.19.5
+gym
+opencv_python
+json
