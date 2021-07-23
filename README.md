@@ -61,12 +61,18 @@ Some changes were made to package the environment for reinforcement learning exp
 * Random <= RL <= Greedy
 ## Results
 ### Scores vs time
-
+![](https://user-images.githubusercontent.com/43957213/126825787-74f71017-e7e4-4fd6-a8f5-668511e80382.png)
+![](https://user-images.githubusercontent.com/43957213/126825790-74410964-a833-49ce-9c20-4263e4f58ae3.png)
+![](https://user-images.githubusercontent.com/43957213/126825792-0573f675-2b71-4353-a6ee-5a0d3c86e93b.png)
 ### Relative score vs time (compare to random baseline)
+![](https://user-images.githubusercontent.com/43957213/126825795-114b90b9-1143-4456-85ab-328fb9b1193b.png)
+![](https://user-images.githubusercontent.com/43957213/126825798-84367946-3049-459d-bec7-5887aa2d6bdc.png)
 ### Score vs steps
 ![](https://user-images.githubusercontent.com/43957213/126824340-475fd4ef-28df-47be-9e1a-770780260535.png)
-![](https://user-images.githubusercontent.com/43957213/126825475-7531c994-5e7f-4dad-96f4-f9fc6a86e678.png)
+![](https://user-images.githubusercontent.com/43957213/126825801-db58f25b-41ab-4591-89bf-d36bee86bc02.png)
+![](https://user-images.githubusercontent.com/43957213/126826117-4fb29439-201f-4e36-8b1f-bcb3b217d08c.png)
 ### Relative score vs steps (compare to random baseline)
+![](https://user-images.githubusercontent.com/43957213/126825805-8ea00927-9fbb-404c-a296-073716623d6e.png)
 ![](https://user-images.githubusercontent.com/43957213/126824341-d64c1835-f4c4-46d2-80ac-3ebc48b7a965.png)
 ## Conclusion
 * Training with legal actions is time efficient but more complex due to dynamic action space and requires masking
