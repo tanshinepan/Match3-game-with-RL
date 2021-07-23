@@ -3,6 +3,7 @@
 * Write a match 3 game so it can be used in this project, in which it has to be able to accept inputs in both UI interaction via mouse clicks and in commands.
 * To allow computer to play a game a match 3 by training it using reinforcement learning, and the score will beat that we play.
 ## Process
+![](https://user-images.githubusercontent.com/43957213/126824221-f968842c-3a58-48aa-9b71-717a94e68fdf.png)
 ## Environment 
 ### Match-3 game environment
 #### Rule
@@ -54,6 +55,10 @@ Some changes were made to package the environment for reinforcement learning exp
 #### Action
 * Normal actions – use argmax only to get swaps between different shapes.
 * Legal actions – use argsort and checking to get swaps between different shapes with matching results.
+## Experiment 
+### Baseline
+* Our goal is to train a model that performs better than the random model and as close to the greedy model as possible
+* Random <= RL <= Greedy
 ## Results
 ### Scores vs time
 ### Relative score vs time (compare to random baseline)
