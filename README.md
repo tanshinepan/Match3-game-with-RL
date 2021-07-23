@@ -61,9 +61,12 @@ Some changes were made to package the environment for reinforcement learning exp
 * Random <= RL <= Greedy
 ## Results
 ### Scores vs time
+
 ### Relative score vs time (compare to random baseline)
 ### Score vs steps
+![](https://user-images.githubusercontent.com/43957213/126824340-475fd4ef-28df-47be-9e1a-770780260535.png)
 ### Relative score vs steps (compare to random baseline)
+![](https://user-images.githubusercontent.com/43957213/126824341-d64c1835-f4c4-46d2-80ac-3ebc48b7a965.png)
 ## Conclusion
 * Training with legal actions is time efficient but more complex due to dynamic action space and requires masking
 * PPO and A3C isn’t training enough.
