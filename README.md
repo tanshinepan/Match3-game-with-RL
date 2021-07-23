@@ -65,6 +65,7 @@ Some changes were made to package the environment for reinforcement learning exp
 ### Relative score vs time (compare to random baseline)
 ### Score vs steps
 ![](https://user-images.githubusercontent.com/43957213/126824340-475fd4ef-28df-47be-9e1a-770780260535.png)
+![](https://user-images.githubusercontent.com/43957213/126825475-7531c994-5e7f-4dad-96f4-f9fc6a86e678.png)
 ### Relative score vs steps (compare to random baseline)
 ![](https://user-images.githubusercontent.com/43957213/126824341-d64c1835-f4c4-46d2-80ac-3ebc48b7a965.png)
 ## Conclusion
