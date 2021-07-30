@@ -10,16 +10,16 @@ The previously proposed algorithms include methods such as MCTS [1], deep neural
 ### 2.1. GYM [8], [9], [10]
 A toolkit for developing and comparing reinforcement learning algorithms. GYM makes no assumptions about the structure of your agent. It is compatible with any numerical computation library, such as Pytorch. We package our environment to GYM for reinforcement learning experiments and easier access.
 The following is the critical method:
-**env = gym.make(),** 
-create the game environments
-**observation = env.reset(),**
-reset the environment to default
-**env.render(),** 
-render the state and environment
-**action = env.action_space.sample(),** 
-get the action
-**observation, reward, done, info = env.step(action),** 
-apply the action to the state, and we will get the new state, reward, if game ends, and the other information 
+
+**env = gym.make()** - create the game environments
+
+**observation = env.reset()** - reset the environment to default
+
+**env.render()** - render the state and environment
+
+**action = env.action_space.sample()** - get the action
+
+**observation, reward, done, info = env.step(action)** - apply the action to the state, and we will get the new state, reward, if game ends, and the other information 
 ### 2.2. RLlib [11], [12]
 A module on Python for providing reinforcement learning algorithms. We use some of its methods to implement the algorithm. The authors argue for building composable RL components by encapsulating parallelism and resource requirements within individual components, which can be achieved by building on top of a flexible task-based programming model
 ## 3.	Environment - Match-3 game environment 
@@ -56,10 +56,12 @@ Some changes were made to package the environment for reinforcement learning exp
 #### 4.4.1.	Self implemented
 * DQN
 * DDQN
+
 We want to ensure the algorithm is correct and the code is suitable for our experiment. Furthermore, we hope the code is elastic to use. So we build the code with Pytorch instead of using other higher level modules. DQN and DDQN are trained with legal actions since normal actions are very unfriendly to value-based models.
 #### 4.4.2.	Using RLlib [11], [12]
 * PPO
 * A3C
+
 Since we think the policy-based model is more complicated to implement and harder to debug than value-based, we import the RLlib  [11], [12] module on Python for correctness. The RLlib [11], [12] module provides lots of deep reinforcement learning algorithms and friendly connections to the GYM interface [8], [9], [10]. PPO and A3C are trained with normal actions since we regard that the difference between normal actions and legal actions isn’t larger than value-based models.
 #### 4.4.3.	DQN [4] and DDQN Model
 * 2 Convolution layer – checking the line and other patterns
@@ -76,22 +78,27 @@ We set 2 baselines to compare with our model to see if the model is good enough 
 ### 5.2. Results
 #### Scores vs time
 The performances of three deep reinforcement learning algorithms as the time passes.
+
 ![](https://user-images.githubusercontent.com/43957213/126825787-74f71017-e7e4-4fd6-a8f5-668511e80382.png)
 ![](https://user-images.githubusercontent.com/43957213/126825790-74410964-a833-49ce-9c20-4263e4f58ae3.png)
 ![](https://user-images.githubusercontent.com/43957213/126825792-0573f675-2b71-4353-a6ee-5a0d3c86e93b.png)
 #### Relative score vs time (compare to random baseline)
 The relative performances of three deep reinforcement learning algorithms beyond the random baseline as the time passes.
+
 ![](https://user-images.githubusercontent.com/43957213/126825795-114b90b9-1143-4456-85ab-328fb9b1193b.png)
 ![](https://user-images.githubusercontent.com/43957213/126825798-84367946-3049-459d-bec7-5887aa2d6bdc.png)
 #### Score vs steps
 The performances of three deep reinforcement learning algorithms as the numbers of the training step increase.
+
 ![](https://user-images.githubusercontent.com/43957213/126824340-475fd4ef-28df-47be-9e1a-770780260535.png)
 ![](https://user-images.githubusercontent.com/43957213/126825801-db58f25b-41ab-4591-89bf-d36bee86bc02.png)
 ![](https://user-images.githubusercontent.com/43957213/126826117-4fb29439-201f-4e36-8b1f-bcb3b217d08c.png)
 #### Relative score vs steps (compare to random baseline)
 The relative performances of three deep reinforcement learning algorithms beyond the random baseline as the numbers of the training step increase.
+
 ![](https://user-images.githubusercontent.com/43957213/126825805-8ea00927-9fbb-404c-a296-073716623d6e.png)
 ![](https://user-images.githubusercontent.com/43957213/126824341-d64c1835-f4c4-46d2-80ac-3ebc48b7a965.png)
+
 The performance of three deep reinforcement learning algorithms isn’t good enough. All of them don’t beat the baselines, the model can’t help the player to win.
 ## 6.	Conclusion
 All of the deep reinforcement learning models don’t reach our expectation, and another paper [5] shows that DQN and PPO can’t beat the random baseline. Thus, we conclude that DRL may benefit match-3 games a lot. Moreover, because the game has too many states (# states = # shapes ^ (row * column)), the game may be too complicated to be trained well. And we may haven’t trained enough steps and time to converge  yet before we test cause the bad performance. Furthermore, training with legal actions is time efficient but more complex due to dynamic action space and requires masking, and we only put legal masks on the models we built by ourselves. For the models with legal actions, it is very complicated in dynamic action space, and for the models without legal action masks, it may take lots of time to converge and be useful. Unfortunately, both reasons lead to the worse performance. Above all, The most critical reason is our game environment setting, our games with 8 * 8 planes and 5 shapes take too large a part of the luck. It is approximately a fortune game instead of a technique game. Thus, we have to correct our wrong game configurations and take other tests in the future.
@@ -99,14 +106,25 @@ All of the deep reinforcement learning models don’t reach our expectation, and
 Seeing that the performance of three models isn’t good, we have to use the more powerful model in the deep learning part. Therefore, we should try some strong models like RestNet. Moreover, because we have to complete the easier task before finishing the harder problem, we should restrict legal actions on every model instead of utilizing normal actions. In addition, we have to adopt other RL algorithms and find which is the most appropriate to suit the match-3 games. Last but not least, the bad performance of the models may be caused by the large impact from the luck, so we should adjust the configurations and parameters to ensure the game won’t take great account of the fortune.
 ## 8.	Reference
 [1] POROMAA, Erik Ragnar. Crushing candy crush: predicting human success rate in a mobile game using Monte-Carlo tree search. 2017. 
+
 [2] PURMONEN, Sami. Predicting game level difficulty using deep neural networks. 2017. 
+
 [3] GUDMUNDSSON, Stefan Freyr, et al. Human-like playtesting with deep learning. In: 2018 IEEE Conference on Computational Intelligence and Games (CIG). IEEE, 2018. p. 1-8. 
+
 [4] https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html?fbclid=IwAR1UzQffW67bR-NAFrVGjeNNH93jeCT77nPyrdxM5aUz1Vx5TUkW_1gfKWE
+
 [5] KAMALDINOV, Ildar; MAKAROV, Ilya. Deep reinforcement learning in match-3 game. In: 2019 IEEE conference on games (CoG). IEEE, 2019. p. 1-4.
+
 [6] SHIN, Yuchul, et al. Playtesting in match 3 game using strategic plays via reinforcement learning. IEEE Access, 2020, 8: 51593-51600.
+
 [7] https://github.com/wrk226/match_3_game_simulator_py
-[8] BROCKMAN, Greg, et al. Openai gym. arXiv preprint arXiv:1606.01540, 2016. 
+
+[8] BROCKMAN, Greg, et al. Openai gym. arXiv preprint arXiv:1606.01540, 2016.
+
 [9] https://gym.openai.com/docs/?fbclid=IwAR28D5AQlDWBo_UJ-3U2oFcCW_yz_t9wx1of0TQzKJK6PJfTfI0W6hkpRxI
+
 [10] https://github.com/hans1996/match3_env?fbclid=IwAR315g0k8qYmJAjt12FuZ6ycLwwRiK3b1Gt63l9EZ0nVdefOupo2tiy8DeU
+
 [11]IANG, Eric, et al. RLlib: Abstractions for distributed reinforcement learning. In: International Conference on Machine Learning. PMLR, 2018. p. 3053-3062.
+
 [12] htps://docs.ray.io/en/master/rllib.html?fbclid=IwAR2X94QIGzZ18ryzaL4dg908maxORCQtNjqtfTY83t-s_nWW-F_4SWjTORA
